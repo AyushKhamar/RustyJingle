@@ -1,2 +1,0 @@
-# RustyJingle
-A spotify clone
