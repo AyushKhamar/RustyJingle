@@ -13,7 +13,7 @@ const uploadToCloudinary = async (file) => {
   }
 };
 
-export const createSong = async (req, res) => {
+export const createSong = async (req, res, next) => {
   try {
     // todo these contents are used in order to check if there are any audio or image files inside of the req.files object.
     if (!req.files || !req.files.audioFile || !req.files.imageFile) {
@@ -51,7 +51,7 @@ export const createSong = async (req, res) => {
   }
 };
 
-export const deleteSong = async (req, res) => {
+export const deleteSong = async (req, res, next) => {
   try {
     const { id } = req.params;
     const song = await Song.findById(id);
@@ -71,7 +71,7 @@ export const deleteSong = async (req, res) => {
   }
 };
 
-export const createAlbum = async (req, res) => {
+export const createAlbum = async (req, res, next) => {
   try {
     const { title, artist, releaseYear } = req.body;
     if (!title || !artist || !releaseYear || !req.files || !req.files.imageFile)
@@ -99,7 +99,7 @@ export const createAlbum = async (req, res) => {
     next(error);
   }
 };
-export const deleteAlbum = async (req, res) => {
+export const deleteAlbum = async (req, res, next) => {
   try {
     const { id } = req.params;
     await Song.deleteMany({ albumId: id });
