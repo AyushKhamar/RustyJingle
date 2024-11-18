@@ -21,5 +21,6 @@ export const authCallback = async (req, res) => {
     res
       .status(500)
       .json({ success: false, message: "Some error in callback controller" });
+    next(error);
   }
 };
