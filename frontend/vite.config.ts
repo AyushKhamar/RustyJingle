@@ -9,4 +9,8 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  //todo this is how we set default port in vite
+  server: {
+    port: 3000,
+  },
 });
