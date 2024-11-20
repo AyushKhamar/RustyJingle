@@ -11,10 +11,17 @@ import { clerkMiddleware } from "@clerk/express";
 import fileUpload from "express-fileupload";
 import path from "node:path";
 import { error } from "node:console";
+import cors from "cors";
 
 dotenv.config();
 const app = express();
 const __dirname = path.resolve();
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
 app.use(clerkMiddleware()); //this will add auth to req object
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
