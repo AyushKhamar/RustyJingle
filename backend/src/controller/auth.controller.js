@@ -16,6 +16,11 @@ export const authCallback = async (req, res, next) => {
         content: { firstName, lastName, imageURL, id },
       });
     }
+    res.status(200).json({
+      success: true,
+      message: "User already there",
+      content: { firstName, lastName, imageURL, id },
+    });
   } catch (error) {
     console.log(error);
     res

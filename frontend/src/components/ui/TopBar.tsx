@@ -10,15 +10,16 @@ import { Link } from "react-router-dom";
 import SignInOAuthButtons from "./SignInOAuthButtons.tsx";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "./button.tsx";
+import { useAuthStore } from "@/stores/useAuthStore.ts";
 
 const Topbar = () => {
-  const isAdmin = false;
+  const { isAdmin } = useAuthStore();
   console.log({ isAdmin });
 
   return (
     <div
       className="flex items-center justify-between p-4 sticky top-0 bg-zinc-900/75 
-      backdrop-blur-md z-10
+      backdrop-blur-md z-10 rounded-lg
     "
     >
       <div className="flex gap-2 items-center">
@@ -35,11 +36,11 @@ const Topbar = () => {
             Admin Dashboard
           </Link>
         )}
-        <SignedIn
+        {/* <SignedIn
         //todo THese components, i.e signed in and signed out are from clerk and work according to the description. SO I can write simple logic as , if user is signed in then show the signout button and the user button
         >
           <SignOutButton />
-        </SignedIn>
+        </SignedIn> */}
         <SignedOut>
           <SignInOAuthButtons />
         </SignedOut>
