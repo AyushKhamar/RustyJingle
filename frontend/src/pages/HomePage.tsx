@@ -3,6 +3,7 @@ import { ScrollArea } from "@/components/ui/scroll-area.tsx";
 import SectionGrid from "@/components/ui/SectionGrid.tsx";
 import Topbar from "@/components/ui/TopBar.tsx";
 import { useMusicStore } from "@/stores/UseMusicStore.ts";
+import { usePlayStore } from "@/stores/usePlayStore.ts";
 import React, { useEffect } from "react";
 
 const HomePage = () => {
@@ -29,20 +30,24 @@ const HomePage = () => {
   }, [fetchFeaturedSongs, fetchMadeForYouSongs, fetchTrendingSongs]);
   console.log(featuredSongs, madeForYouSongs, trendingSongs);
 
-  // const { initializeQueue } = usePlayerStore();
+  const { initialiseQueue } = usePlayStore();
 
-  // useEffect(() => {
-  // 	fetchFeaturedSongs();
-  // 	fetchMadeForYouSongs();
-  // 	fetchTrendingSongs();
-  // }, [fetchFeaturedSongs, fetchMadeForYouSongs, fetchTrendingSongs]);
+  useEffect(() => {
+    fetchFeaturedSongs();
+    fetchMadeForYouSongs();
+    fetchTrendingSongs();
+  }, [fetchFeaturedSongs, fetchMadeForYouSongs, fetchTrendingSongs]);
 
-  // useEffect(() => {
-  // 	if (madeForYouSongs.length > 0 && featuredSongs.length > 0 && trendingSongs.length > 0) {
-  // 		const allSongs = [...featuredSongs, ...madeForYouSongs, ...trendingSongs];
-  // 		initializeQueue(allSongs);
-  // 	}
-  // }, [initializeQueue, madeForYouSongs, trendingSongs, featuredSongs]);
+  useEffect(() => {
+    if (
+      madeForYouSongs.length > 0 &&
+      featuredSongs.length > 0 &&
+      trendingSongs.length > 0
+    ) {
+      const allSongs = [...featuredSongs, ...madeForYouSongs, ...trendingSongs];
+      initialiseQueue(allSongs);
+    }
+  }, [initialiseQueue, madeForYouSongs, trendingSongs, featuredSongs]);
 
   return (
     <>

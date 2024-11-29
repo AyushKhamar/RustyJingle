@@ -3,13 +3,24 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable.tsx";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import LeftSidebar from "./LeftSidebar.tsx";
 import FriendsActivity from "./FriendsActivity.tsx";
 import AudioPlayer from "@/components/ui/AudioPlayer.tsx";
+import { PlaybackControls } from "@/components/ui/PlaybackControls.tsx";
 const MainLayout = () => {
-  const isMobile = false;
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
   return (
     <div className="h-screen bg-black flex flex-col text-white">
       <ResizablePanelGroup
@@ -42,6 +53,7 @@ const MainLayout = () => {
           <FriendsActivity />
         </ResizablePanel>
       </ResizablePanelGroup>
+      <PlaybackControls />
     </div>
   );
 };
