@@ -7,6 +7,7 @@ import ChatPage from "./pages/ChatPage.tsx";
 import AlbumPage from "./pages/AlbumPage.tsx";
 import AdminPage from "./pages/AdminPage.tsx";
 import { Toaster } from "react-hot-toast";
+import NotFoundPage from "./pages/NotFoundPage.tsx";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           }
         ></Route>
         <Route path="/auth-callback" Component={AuthCallbackPage}></Route>
+        <Route path="/admin" element={<AdminPage />}></Route>
         <Route
           //todo if you have designed a common sidebar or a layout and you wantall the pages to only change a certain section of the page and not the entire layout then you can wrap those routes inside the layout route element
 
@@ -31,8 +33,8 @@ function App() {
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/chat" element={<ChatPage />}></Route>
           <Route path="/albums/:id" element={<AlbumPage />}></Route>
+          <Route path="*" element={<NotFoundPage />}></Route>
         </Route>
-        <Route path="/admin" element={<AdminPage />}></Route>
       </Routes>
       <Toaster />
     </>

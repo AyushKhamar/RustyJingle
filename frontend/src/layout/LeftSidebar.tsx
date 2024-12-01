@@ -33,7 +33,7 @@ const LeftSidebar = () => {
           </Link>
           <SignedIn>
             <Link
-              to={"/"}
+              to={"/chat"}
               className={cn(
                 buttonVariants({
                   variant: "ghost",

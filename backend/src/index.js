@@ -10,12 +10,16 @@ import { statRouter } from "./routes/stat.route.js";
 import { clerkMiddleware } from "@clerk/express";
 import fileUpload from "express-fileupload";
 import path from "node:path";
-import { error } from "node:console";
 import cors from "cors";
+import { createServer } from "http";
+import { initializeSocket } from "./lib/socket.js";
 
 dotenv.config();
 const app = express();
 const __dirname = path.resolve();
+//todo pass in the express app to create the server here.
+const httpServer = createServer(app);
+initializeSocket(httpServer);
 app.use(
   cors({
     origin: "http://localhost:3000",
@@ -53,7 +57,7 @@ app.use((err, req, res, next) => {
         : err.message,
   });
 });
-app.listen(process.env.PORT, async () => {
+httpServer.listen(process.env.PORT, async () => {
   console.log(`Server started at port ${process.env.PORT}`);
   await connectToMongoDb();
 });
