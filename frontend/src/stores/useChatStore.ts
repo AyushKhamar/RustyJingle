@@ -23,7 +23,6 @@ interface ChatStore {
 }
 
 //todo we just need base url for connecting to socket
-console.log(import.meta.env.MODE, "frontend node env");
 const baseURL =
   import.meta.env.MODE === "development" ? "http://localhost:5000" : "/";
 

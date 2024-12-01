@@ -1,5 +1,5 @@
 import { usePlayStore } from "@/stores/usePlayStore.ts";
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 const AudioPlayer = () => {
   //todo to play audio we need the html audio element. It doesnt matter where we put it because it wont take up any space for the same.

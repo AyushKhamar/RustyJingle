@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils.ts";
 import { SignedIn } from "@clerk/clerk-react";
 import { ScrollArea } from "@/components/ui/scroll-area.tsx";
 import { HomeIcon, Library, MessageCircleIcon } from "lucide-react";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import PlayListSkeleton from "@/components/ui/PlayListSkeleton.tsx";
 import { useMusicStore } from "@/stores/UseMusicStore.ts";

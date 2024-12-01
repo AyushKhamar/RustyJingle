@@ -4,12 +4,11 @@ import SectionGrid from "@/components/ui/SectionGrid.tsx";
 import Topbar from "@/components/ui/TopBar.tsx";
 import { useMusicStore } from "@/stores/UseMusicStore.ts";
 import { usePlayStore } from "@/stores/usePlayStore.ts";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
 const HomePage = () => {
   const {
     isLoading,
-    error,
     trendingSongs,
     madeForYouSongs,
     featuredSongs,

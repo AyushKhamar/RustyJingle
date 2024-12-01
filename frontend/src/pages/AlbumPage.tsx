@@ -1,10 +1,9 @@
 import { Button } from "@/components/ui/button.tsx";
 import { ScrollArea } from "@/components/ui/scroll-area.tsx";
-import { Skeleton } from "@/components/ui/skeleton.tsx";
 import { useMusicStore } from "@/stores/UseMusicStore.ts";
 import { usePlayStore } from "@/stores/usePlayStore.ts";
 import { Clock, Pause, Play } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 export const formatDuration = (seconds: number) => {
   const minutes = Math.floor(seconds / 60);
@@ -15,7 +14,6 @@ const AlbumPage = () => {
   const { currentAlbum, fetchAlbumById, isLoading } = useMusicStore();
   const { isPlaying, togglePlay, currentSong, playAlbum } = usePlayStore();
   console.log({ isPlaying });
-  const isCurrentSong = false;
   const { id } = useParams();
   useEffect(() => {
     const fetchData = async () => {
