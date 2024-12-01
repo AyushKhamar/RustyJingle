@@ -47,6 +47,13 @@ app.use("/api/songs", songRouter);
 app.use("/api/albums", albumRouter);
 app.use("/api/stats", statRouter);
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../frontend/dist")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../frontend", "dist", "index.html"));
+  });
+}
+
 // todo this is how you can setup one error controller, so that it consoles or displays error message for each of the catch blocks. we can just send it to this middleware via next(error)
 app.use((err, req, res, next) => {
   console.log(err);
